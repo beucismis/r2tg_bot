@@ -1,0 +1,3 @@
+#!/bin/bash
+
+tail -f r2tg_bot/r2tg_bot.log
