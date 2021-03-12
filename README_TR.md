@@ -12,7 +12,7 @@ Arşiv kanalı: [t.me/r2tg_bot_archive](https://t.me/r2tg_bot_archive)
 
 ## Bağımlılıklar
 Debian tabanı için: `apt install ffmpeg` <br/>
-Arch tabanı için: `pacman -R ffmpeg4.0`
+Arch tabanı için: `pacman -S ffmpeg4.0`
 
 ## Kurulum
 ```sh
