@@ -5,7 +5,7 @@
 <img src="https://img.shields.io/pypi/v/r2tg_bot"> <img src="https://img.shields.io/pypi/l/r2tg_bot"> <img src="https://img.shields.io/badge/-praw-FF4301"> <img src="https://img.shields.io/badge/-pyrogram-0088CC"> <img src="https://img.shields.io/badge/style-black-black?style=flat">
 
 
-Easiest way to upload Reddit videos to Telegram. Just comment bots nicknameççç
+Easiest way to upload Reddit videos to Telegram. Just comment bots nickname...
 
 
 Reddit bot: [reddit.com/u/r2tg_bot](https://reddit.com/u/r2tg_bot) <br/>
@@ -20,7 +20,7 @@ Arch based system: `pacman -S ffmpeg4.0`
 ```sh
 git clone https://github.com/beucismis/r2tg_bot
 ```
-Edit `praw.ini` nad `pyrogram.ini` files.
+Edit `praw.ini` and `pyrogram.ini` files.
 
 ## Donation
 Soon...
