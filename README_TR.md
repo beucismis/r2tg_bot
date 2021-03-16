@@ -23,5 +23,5 @@ praw.ini ve pyrogram.ini dosyalarını düzenle.
 ## Bağış
 Yakında...
 
-## License
+## Lisans
 Bu proje GPL-3.0 altında lisanslanmıştır - ayrıntılar için [LICENSE](LICENSE) dosyasına bakın
