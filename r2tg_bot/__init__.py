@@ -26,7 +26,7 @@ import subprocess
 import config as c
 
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 __author__ = "Adil Gurbuz"
 __contact__ = "beucismis@tutamail.com"
 __source__ = "https://github.com/beucismis/r2tg_bot"
