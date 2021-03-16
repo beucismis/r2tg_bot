@@ -26,14 +26,6 @@ logger.addHandler(handler)
 handler.setFormatter(logging.Formatter(c.FORMAT))
 
 
-INFO = (
-    "[Info](https://reddit.com/user/r2tg_bot/comments/lz1d7b/about_the_r2tg_bot/) | "
-    "[Feedback](https://reddit.com/message/compose/?to=beucismis&subject=Feedback%20for%20r2tg_bot) | "
-    "[Donate]() (*Soon...*) | "
-    "[Source](https://github.com/beucismis/r2tg_bot)"
-)
-
-
 def get_text_of_parent(comment):
     parent = comment.parent()
 
@@ -125,7 +117,7 @@ class R2TG_BOT:
         if comment.submission.over_18:
             should_reply = False
             logger.info("Submission is NSFW, ignoring.")
-            comment.reply("Yes video but NSFW. I'm so sorry... \n\n" + INFO)
+            comment.reply("Yes video but NSFW. I'm so sorry... \n\n" + c.INFO)
 
         got_rate_limited = False
 
@@ -170,7 +162,7 @@ class R2TG_BOT:
 
         with self._telegram:
             self._telegram.send_video(
-                "r2tg_bot_archive",
+                c.DEFAULT_TG_CHANNEL,
                 c.MEDIA_PATH + "/" + file_name + ".mp4",
                 caption=(
                     f"**Title:** {submission.title} \n"
@@ -184,8 +176,8 @@ class R2TG_BOT:
         try:
             mention.reply(
                 "Yes, video. I'm ready, sending to Telegram... \n\n"
-                "### [Upload via r2tg_bot_archive](https://t.me/r2tg_bot_archive) \n"
-                + INFO
+                f"### [Upload via {c.DEFAULT_TG_CHANNEL}](https://t.me/s/{c.DEFAULT_TG_CHANNEL}) \n"
+                + c.INFO
             )
         except praw.exceptions.APIException as e:
             logger.warning("API exception: " + e.message)

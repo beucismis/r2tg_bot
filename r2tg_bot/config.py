@@ -15,6 +15,14 @@ NUM_LOG_FILES_TO_KEEP = 3
 LOG_LEVEL = logging.INFO
 FORMAT = "[%(asctime)s] [%(levelname)s] - %(message)s"
 
+DEFAULT_TG_CHANNEL = "r2tg_bot_archive"
+
+INFO = (
+    "[Info](https://reddit.com/user/r2tg_bot/comments/lz1d7b/about_the_r2tg_bot/) | "
+    "[Feedback](https://reddit.com/message/compose/?to=beucismis&subject=Feedback%20for%20r2tg_bot) | "
+    "[Donate]() (*Soon...*) | "
+    "[Source](https://github.com/beucismis/r2tg_bot)"
+)
 
 def normalize_name(name):
     return name.lower()
