@@ -11,6 +11,8 @@ TODO.txt
 praw.ini
 pyrogram.ini
 
+videos/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
