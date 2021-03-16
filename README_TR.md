@@ -8,7 +8,7 @@ Reddit videolarını Telegram'a yüklemenin en kolay yolu. Gönderi yorumlarınd
 
 Reddit botu: [reddit.com/u/r2tg_bot](https://reddit.com/u/r2tg_bot) <br/>
 Telegram botu: [t.me/r2tg_bot](https://t.me/r2tg_bot) <br/>
-Arşiv kanalı: [t.me/r2tg_bot_archive](https://t.me/r2tg_bot_archive)
+Telegram arşiv kanalı: [t.me/r2tg_bot_archive](https://t.me/s/r2tg_bot_archive)
 
 ## Bağımlılıklar
 Debian tabanı için: `apt install ffmpeg` <br/>
@@ -24,4 +24,4 @@ praw.ini ve pyrogram.ini dosyalarını düzenle.
 Yakında...
 
 ## Lisans
-Bu proje GPL-3.0 altında lisanslanmıştır - ayrıntılar için [LICENSE](LICENSE) dosyasına bakın
+Bu proje GPL-3.0 altında lisanslanmıştır - ayrıntılar için [LICENSE](LICENSE) dosyasına bakın.
