@@ -1,6 +1,6 @@
-# r2tg_bot
+<img src="https://i.imgur.com/6FKwvXC.png" width="400" align="right">
 
-<img src="https://i.imgur.com/6FKwvXC.png" width="500" align="right">
+# r2tg_bot
 
 <img src="https://img.shields.io/pypi/v/r2tg_bot"> <img src="https://img.shields.io/pypi/l/r2tg_bot"> <img src="https://img.shields.io/badge/-praw-FF4301"> <img src="https://img.shields.io/badge/-pyrogram-0088CC"> <img src="https://img.shields.io/badge/style-black-black?style=flat">
 
