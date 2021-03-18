@@ -182,7 +182,7 @@ class R2TG_BOT:
         try:
             mention.reply(
                 "Yes, video. I'm ready, sending to Telegram... \n\n"
-                "### [Upload via [{0}]({1}) \n".format(
+                "### [Upload via {0}]({1}) \n".format(
                     c.DEFAULT_TG_CHANNEL, c.DEFAULT_TG_CHANNEL_URL
                 )
                 + c.INFO
