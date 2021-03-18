@@ -4,7 +4,6 @@ import logging
 MEDIA_PATH = "videos"
 
 LIMIT_ON_INBOX = 100
-
 SECONDS_BETWEEN_RUNS = 30
 SECONDS_TO_WAIT_AFTER_RATE_LIMITING = 300
 
@@ -16,13 +15,15 @@ LOG_LEVEL = logging.INFO
 FORMAT = "[%(asctime)s] [%(levelname)s] - %(message)s"
 
 DEFAULT_TG_CHANNEL = "r2tg_bot_archive"
+DEFAULT_TG_CHANNEL_URL = "https://t.me/s/" + DEFAULT_TG_CHANNEL
 
 INFO = (
-    "[Info](https://reddit.com/user/r2tg_bot/comments/lz1d7b/about_the_r2tg_bot/) | "
+    "[Info](https://reddit.com/user/r2tg_bot/comments/lz1d7b/about_the_r2tg_bot) | "
     "[Feedback](https://reddit.com/message/compose/?to=beucismis&subject=Feedback%20for%20r2tg_bot) | "
     "[Donate]() (*Soon...*) | "
-    "[Source](https://github.com/beucismis/r2tg_bot)"
+    "[Source Code](https://github.com/beucismis/r2tg_bot)"
 )
+
 
 def normalize_name(name):
     return name.lower()

@@ -59,6 +59,9 @@ class R2TG_BOT:
         self._bot_name = reddit.user.me().name.lower()
         self._tag_for_bot = "u/" + self._bot_name
 
+        self.good_bot_strs = ["good bot", "iyi bot", "cici bot"]
+        self.bad_bot_strs = ["bad bot", "kötü bot"]
+
     def reply_to_username_mentions(self):
         logger.info("Reading inbox...")
 
@@ -76,12 +79,12 @@ class R2TG_BOT:
                         )
                     )
 
-            elif lower == "good bot":
+            elif lower in self.good_bot_strs:
                 self._inbox.mark_read([mention])
                 logger.info("Good bot.")
                 mention.reply("ヽ(•‿•)ノ")
 
-            elif lower == "bad bot":
+            elif lower in self.bad_bot_strs:
                 self._inbox.mark_read([mention])
                 logger.info("Bad bot.")
                 mention.reply("( ._.)")
@@ -165,10 +168,13 @@ class R2TG_BOT:
                 c.DEFAULT_TG_CHANNEL,
                 c.MEDIA_PATH + "/" + file_name + ".mp4",
                 caption=(
-                    f"**Title:** {submission.title} \n"
-                    f"**Link:** {submission.url} \n"
-                    f"**Subreddit:** r/{submission.subreddit} \n"
-                    f"**Author:** u/{submission.author}"
+                    "**Title:** {0} \n**Link:** {1} \n**"
+                    "Subreddit:** r/#{2} \n**Author:** u/#{3}".format(
+                        submission.title,
+                        submission.url,
+                        submission.subreddit,
+                        submission.author,
+                    )
                 ),
             )
         logger.info("Done.")
@@ -176,7 +182,9 @@ class R2TG_BOT:
         try:
             mention.reply(
                 "Yes, video. I'm ready, sending to Telegram... \n\n"
-                f"### [Upload via {c.DEFAULT_TG_CHANNEL}](https://t.me/s/{c.DEFAULT_TG_CHANNEL}) \n"
+                "### [Upload via [{0}]({1}) \n".format(
+                    c.DEFAULT_TG_CHANNEL, c.DEFAULT_TG_CHANNEL_URL
+                )
                 + c.INFO
             )
         except praw.exceptions.APIException as e:
