@@ -1,5 +1,7 @@
 import logging
+from os import path
 
+this_dir, this_filename = path.split(__file__)
 
 MEDIA_PATH = "videos"
 
@@ -15,7 +17,7 @@ LOG_LEVEL = logging.INFO
 FORMAT = "[%(asctime)s] [%(levelname)s] - %(message)s"
 
 DEFAULT_TG_CHANNEL = "r2tg_bot_archive"
-DEFAULT_TG_CHANNEL_URL = "https://t.me/s/" + DEFAULT_TG_CHANNEL
+DEFAULT_TG_CHANNEL_URL = "https://t.me/s/" + DEFAULT_TG_CHANNEL + "/"
 
 INFO = (
     "[Info](https://reddit.com/user/r2tg_bot/comments/lz1d7b/about_the_r2tg_bot) | "

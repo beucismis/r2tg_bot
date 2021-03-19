@@ -164,12 +164,12 @@ class R2TG_BOT:
         logger.info("Uploading video...")
 
         with self._telegram:
-            self._telegram.send_video(
+            msg = self._telegram.send_video(
                 c.DEFAULT_TG_CHANNEL,
                 c.MEDIA_PATH + "/" + file_name + ".mp4",
                 caption=(
-                    "**Title:** {0} \n**Link:** {1} \n**"
-                    "Subreddit:** r/#{2} \n**Author:** u/#{3}".format(
+                    "**Title:** {0} \n**Link:** {1} \n"
+                    "**Subreddit:** r/#{2} \n**Author:** u/#{3}".format(
                         submission.title,
                         submission.url,
                         submission.subreddit,
@@ -183,7 +183,7 @@ class R2TG_BOT:
             mention.reply(
                 "Yes, video. I'm ready, sending to Telegram... \n\n"
                 "### [Upload via {0}]({1}) \n".format(
-                    c.DEFAULT_TG_CHANNEL, c.DEFAULT_TG_CHANNEL_URL
+                    c.DEFAULT_TG_CHANNEL, c.DEFAULT_TG_CHANNEL_URL + str(msg.message_id)
                 )
                 + c.INFO
             )
