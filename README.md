@@ -4,9 +4,9 @@
 
 <img src="https://img.shields.io/badge/r2tg__bot-ONLINE-green"> <img src="https://img.shields.io/reddit/user-karma/combined/r2tg_bot">
 
-<img src="https://img.shields.io/pypi/v/r2tg_bot"> <img src="https://img.shields.io/pypi/l/r2tg_bot"> <img src="https://img.shields.io/badge/-pyrogram-0088CC"> 
+<img src="https://img.shields.io/pypi/v/r2tg_bot"> <img src="https://img.shields.io/pypi/l/r2tg_bot"> <img src="https://img.shields.io/badge/style-black-black?style=flat">
 
-<img src="https://img.shields.io/badge/-praw-FF4301"> <img src="https://img.shields.io/badge/style-black-black?style=flat">
+<img src="https://img.shields.io/badge/-praw-FF4301"> <img src="https://img.shields.io/badge/-pyrogram-0088CC"> 
 
 Easiest way to upload Reddit videos to Telegram. Just comment bots nickname...
 
