@@ -1,2 +1,2 @@
-@reboot cd /home/adil/r2tg_bot/r2tg_bot; python3 __init__.py --run
+# @reboot cd /home/adil/r2tg_bot/r2tg_bot; python3 __init__.py --run
 0 0 1,15 * * cd /home/adil/r2tg_bot/r2tg_bot; python3 __init__.py --clearallmedia
