@@ -12,7 +12,7 @@ def get_reddit():
     Returns:
         class: praw.Reddit
     """
-    return praw.Reddit("r2tg_bot")
+    return praw.Reddit("bot")
 
 
 def get_telegram():
@@ -36,7 +36,7 @@ def download_media(url, file_name):
     """
     subprocess.run(
         [
-            f"ffmpeg -i {0}/DASHPlaylist.mpd -c copy {1}/{2}.mp4 2> /dev/null".format(
+            "ffmpeg -i {0}/DASHPlaylist.mpd -c copy {1}/{2}.mp4 2> /dev/null".format(
                 url, c.MEDIA_PATH, file_name
             )
         ],
