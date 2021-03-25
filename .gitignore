@@ -13,6 +13,9 @@ pyrogram.ini
 
 videos/
 
+log_echo
+auto_update
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
