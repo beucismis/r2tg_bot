@@ -27,7 +27,6 @@ DEFAULT_TG_CHANNEL_URL = "https://t.me/s/" + DEFAULT_TG_CHANNEL + "/"
 INFO = (
     "[Info](https://reddit.com/user/r2tg_bot/comments/lz1d7b/about_the_r2tg_bot) | "
     "[Feedback](https://reddit.com/message/compose/?to=beucismis&subject=Feedback%20for%20r2tg_bot) | "
-    "[Donate]() (*Soon...*) | "
     "[Source Code](https://github.com/beucismis/r2tg_bot)"
 )
 
