@@ -6,7 +6,7 @@
 
 Easiest way to upload Reddit videos to Telegram. Just comment bots nickname...
 
-Reddit bot: [reddit.com/u/r2tg_bot](https://reddit.com/u/r2tg_bot) ![](https://img.shields.io/reddit/user-karma/combined/r2tg_bot) <br/>
+Reddit bot: [reddit.com/u/r2tg_bot](https://reddit.com/u/r2tg_bot) <br/>
 Telegram bot: [t.me/r2tg_bot](https://t.me/r2tg_bot) <br/>
 Telegram archive channel: [t.me/s/r2tg_bot_archive](https://t.me/s/r2tg_bot_archive)
 
@@ -46,3 +46,5 @@ Soon...
 
 ## Lisance
 This project lisanced under GPL-3.0 - for details check [LICENSE](LICENSE) file.
+
+![](https://img.shields.io/reddit/user-karma/combined/r2tg_bot)
