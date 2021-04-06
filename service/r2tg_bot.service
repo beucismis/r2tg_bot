@@ -4,6 +4,9 @@ After = network.target
 
 [Service]
 Type = simple
+User = adil
+Group = adil
+WorkingDirectory=/home/adil/r2tg_bot
 ExecStart = /bin/bash /home/adil/r2tg_bot/run.sh
 Restart = on-failure
 RestartSec = 5
