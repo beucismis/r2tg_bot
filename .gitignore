@@ -1,20 +1,13 @@
+# Log files
 *.log
 
-TODO
-TODO.txt
-
+# Media files
 *.mp4
 *.gif
 
+# Database / Config files
 *.ini
 *.session
-praw.ini
-pyrogram.ini
-
-videos/
-
-log_echo
-auto_update
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
