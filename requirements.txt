@@ -1,3 +1,2 @@
-praw
-tgcrypto
-pyrogram
+telethon
+asyncpraw
