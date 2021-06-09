@@ -1,0 +1,17 @@
+[Unit]
+Description = r2tg_bot service
+After = network.target
+
+[Service]
+Type = simple
+RestartSec = 5
+Restart = on-failure
+TimeoutStartSec = infinity
+
+User = user
+Group = user
+WorkingDirectory=/home/user/r2tg_bot
+ExecStart = /home/user/r2tg_bot/run.sh
+
+[Install]
+WantedBy = multi-user.target
