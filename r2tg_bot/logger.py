@@ -3,8 +3,9 @@ from logging.handlers import RotatingFileHandler
 
 
 class Handler(RotatingFileHandler):
+    """The specified file is opened and used as the stream for logging"""
 
-    level = logging.INFO
+    LEVEL = logging.INFO
 
     def __init__(self):
         RotatingFileHandler.__init__(self, "r2tg_bot.log")
@@ -15,3 +16,20 @@ class Handler(RotatingFileHandler):
         datefmt = "%Y-%m-%d %H:%M:%S"
         fmt = "[%(asctime)s][%(levelname)s] - %(message)s"
         self.setFormatter(logging.Formatter(fmt, datefmt))
+
+
+def get_logger(name):
+    """Return a logger with the specified name
+
+    Args:
+        name (str): Name for logger
+
+    Returns:
+        class: Loggers have the following attributes and methods
+    """
+
+    logger = logging.getLogger(name)
+    logger.setLevel(Handler.LEVEL)
+    logger.addHandler(Handler())
+
+    return logger
