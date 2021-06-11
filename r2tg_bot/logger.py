@@ -25,7 +25,7 @@ def get_logger(name):
         name (str): Name for logger
 
     Returns:
-        class: Loggers have the following attributes and methods
+        class: Loggers have following attributes and methods
     """
 
     logger = logging.getLogger(name)
