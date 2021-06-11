@@ -1,5 +1,6 @@
 import os
 import subprocess
+import configparser
 import urllib.request
 from shutil import which
 
@@ -12,6 +13,85 @@ def check_ffmpeg():
     """
 
     return which("ffmpeg") is not None
+
+
+def get_config():
+    """Get the configuration file
+
+    Returns:
+        class: Configuration parser object
+    """
+
+    config = configparser.ConfigParser()
+    files = config.read("config.ini")
+
+    if not len(files):
+        raise FileNotFoundError("Config file not found!")
+
+    return config
+
+
+def normalize_name(name):
+    """Make lower case all characters
+
+    Args:
+        name (str): User or subreddit name
+
+    Retrun:
+        str: Lower case user name
+    """
+
+    return name.lower()
+
+
+def get_text_of_parent(comment):
+    """Gets parent text of the submission or comment
+
+    Args:
+        comment (class): Reddit comment
+
+    Returns:
+        str: Text of parent or null
+    """
+
+    parent = comment.parent()
+
+    if isinstance(parent, Submission):
+        return parent.selftext
+    elif isinstance(parent, Comment):
+        return parent.body
+
+    return ""
+
+
+def author_name(comment):
+    """Returns the author name
+
+    Args:
+        comment (class): Reddit comment
+
+    Returns:
+        str: If deleted '[deleted]'
+        if not deleted lower case author name
+    """
+
+    if comment.author is None:
+        return "[deleted]"
+    else:
+        return normalize_name(comment.author.name)
+
+
+def subreddit_name(comment):
+    """Return the subreddit name
+
+    Args:
+        comment (class): Reddit comment
+
+    Returns:
+        str: Lower case subreddit name
+    """
+
+    return normalize_name(comment.subreddit.display_name)
 
 
 def download(url, filename):
