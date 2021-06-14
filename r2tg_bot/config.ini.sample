@@ -1,0 +1,28 @@
+[general]
+limit_on_inbox = 100
+seconds_between_runs = 30
+seconds_to_wait_after_rate_limiting = 300
+downloads_path =
+default_telegram_channel = r2tg_bot_archive
+
+[reddit]
+username =
+password =
+user_agent = r2tg_bot by u/beucismis
+client_id =
+client_secret =
+
+[telegram]
+session = r2tg_bot
+api_id =
+api_hash =
+bot_token =
+
+[blacklist]
+users = AutoModerator,Sub_Corrector_Bot
+subreddits = depression,SuicideWatch
+
+[info]
+source_code = https://github.com/beucismis/r2tg_bot
+about = https://reddit.com/user/r2tg_bot/comments/lz1d7b/about_the_r2tg_bot
+feedback = https://reddit.com/message/compose/?to=beucismis&subject=Feedback%20for%20r2tg_bot
