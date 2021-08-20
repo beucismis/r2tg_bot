@@ -2,7 +2,7 @@
 
 ![](https://img.shields.io/badge/style-black-black?style=flat) ![](https://img.shields.io/reddit/user-karma/combined/r2tg_bot)
 
-A Reddit bot that uploads video or GIF files to Telegram. It's very easy to do just mention me (`u/r2tg_bot`) in the comments.
+A Reddit bot that uploads video or GIF files to Telegram. Just mention me (`u/r2tg_bot`) in the comments.
 
 Reddit bot: https://reddit.com/u/r2tg_bot <br/>
 Telegram bot: https://t.me/r2tg_bot <br/>
@@ -19,7 +19,8 @@ Archive channel: https://t.me/s/r2tg_bot_archive
 ## Dependencies
 I use [FFmpeg](https://ffmpeg.org) to download videos and GIFs.
   * Debian based systems: `$ apt install ffmpeg`
-  * Arch based system: `$ pacman -S ffmpeg4.0`
+  * Arch Linux based systems: `$ pacman -S ffmpeg4.0`
+  * CentOS based systems: `$ yum install ffmpeg`
 
 ## Installation and Configuration
 
