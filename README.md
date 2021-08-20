@@ -1,6 +1,4 @@
-# r2tg_bot
-
-<img src="assets/screenshot.png" width="400" align="right">
+<img src="assets/screenshot.png" width="370" align="right">
 
 ![](https://img.shields.io/badge/style-black-black?style=flat) ![](https://img.shields.io/reddit/user-karma/combined/r2tg_bot)
 
@@ -10,9 +8,15 @@ Reddit bot: https://reddit.com/u/r2tg_bot <br/>
 Telegram bot: https://t.me/r2tg_bot <br/>
 Archive channel: https://t.me/s/r2tg_bot_archive
 
-## Dependencies
-Only GNU/Linux 🐧
+## Features
+- Fast and easy
+- Trigger with comment
+- Video and GIF upload
+- Self-hosted
+- Only GNU/Linux
+- Written in Python
 
+## Dependencies
 I use [FFmpeg](https://ffmpeg.org) to download videos and GIFs.
   * Debian based systems: `$ apt install ffmpeg`
   * Arch based system: `$ pacman -S ffmpeg4.0`
