@@ -1,2 +1,2 @@
-telethon
-asyncpraw
+telethon==1.23.0
+asyncpraw==7.4.0
