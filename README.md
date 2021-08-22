@@ -19,7 +19,7 @@ Archive channel: https://t.me/s/r2tg_bot_archive
 ## Installation and Configuration
 
 ### Dependencies
-I use [FFmpeg](https://ffmpeg.org) to download videos and GIFs.
+It use [FFmpeg](https://ffmpeg.org) to merge downloaded video and audio.
   * Debian based systems: `$ apt install ffmpeg`
   * Arch Linux based systems: `$ pacman -S ffmpeg4.0`
   * CentOS based systems: `$ yum install ffmpeg`
