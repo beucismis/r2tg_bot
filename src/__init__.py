@@ -1,1 +1,5 @@
-
+__version__ = "0.7.1"
+__author__ = "Adil Gürbüz"
+__contact__ = "beucismis@tutamail.com"
+__source__ = "https://github.com/beucismis/r2tg_bot"
+__description__ = "A Reddit bot that uploads video or GIF files to Telegram"

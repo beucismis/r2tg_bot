@@ -1,21 +1,14 @@
+import os
 import time
 from . import utils
 from . import logger
-from os import listdir
 import praw.exceptions
-from datetime import datetime
 from praw.models import Comment
-from logging.handlers import RotatingFileHandler
 
-
-__version__ = "0.7.0"
-__author__ = "Adil Gürbüz"
-__contact__ = "beucismis@tutamail.com"
-__source__ = "https://github.com/beucismis/r2tg_bot"
-__description__ = "A Reddit bot that uploads video or GIF files to Telegram"
 
 config = utils.get_config()
 logger = logger.get_logger(__name__)
+path = os.path.dirname(os.path.abspath(__file__))
 
 
 class Bot:
@@ -29,7 +22,7 @@ class Bot:
 
     def tag_for_bot(self):
         me = self.reddit_session.user.me()
-        
+
         return f"u/{me.name.lower()}"
 
     def reply_to_username_mentions(self):
@@ -42,20 +35,19 @@ class Bot:
 
             if isinstance(mention, Comment) and self._was_tagged_in(mention):
                 try:
-                    logger.info("Received comment:")
                     self._reply_to_comment(mention)
                 except Exception as e:
                     logger.error(f"'{type(e).__name__}': {e}")
-            
+
             elif lower in self.good_bot_strings:
                 self.inbox.mark_read([mention])
-                logger.info("Good bot.")
                 mention.reply("ヽ(•‿•)ノ")
+                logger.info(f"u/{utils.author_name(comment)} said good bot.")
 
             elif lower in self.bad_bot_strings:
                 self.inbox.mark_read([mention])
-                logger.info("Bad bot.")
                 mention.reply("( ._.)")
+                logger.info(f"u/{utils.author_name(comment)} said bad bot.")
 
         logger.info("Finished reading inbox.")
         logger.info("-" * 50)
@@ -103,9 +95,9 @@ class Bot:
         comment = mention
 
         while not comment.is_root:
-            if utils.author_name(comment) == utils.author_name(mention) and self._was_tagged_in(
-                comment
-            ):
+            if utils.author_name(comment) == utils.author_name(
+                mention
+            ) and self._was_tagged_in(comment):
                 tags += 1
             comment = comment.parent()
 
@@ -128,39 +120,44 @@ class Bot:
         submission = mention.submission
         media = submission.media
         text_of_parent = utils.get_text_of_parent(mention)
-        file_name = submission.url.split("/")[-1]
+        filename = submission.url.split("/")[-1]
 
         video_url = media["reddit_video"]["fallback_url"]
         audio_url = (
             f"{video_url.split('DASH')[0]}DASH_audio.mp4?{video_url.split('?')[-1]}"
         )
 
+        video_path = os.path.join(path, "media", f"{filename}_video.mp4")
+        audio_path = os.path.join(path, "media", f"{filename}_audio.mp4")
+        output_path = os.path.join(path, "media", f"{filename}.mp4")
+
         logger.info("Downloading video...")
-        utils.download(video_url, f"{file_name}_video.mp4")
+        utils.download(video_url, video_path)
 
         try:
             logger.info("Downloading audio...")
-            utils.download(audio_url, f"{file_name}_audio.mp4")
+            utils.download(audio_url, audio_path)
         except:
             is_audio = False
+            os.rename(video_path, output_path)
             logger.info("Downloading audio... Skip.")
 
         if is_audio:
             logger.info("Merged...")
-            utils.merge(f"{file_name}_video.mp4", f"{file_name}_audio.mp4")
+            utils.merge(video_path, audio_path, output_path)
 
         logger.info("Uploading video...")
         default_telegram_channel = config.get("general", "default_telegram_channel")
 
         with self.telegram_session:
             message = self.telegram_session.send_video(
+                video=output_path,
                 chat_id=config.get("general", "default_telegram_channel"),
-                video="output.mp4",
                 caption=(
-                    f"**Title:** {submission.title}\n"
-                    f"**Link:** {submission.url}\n"
+                    f"{submission.title}\n\n"
+                    f"**Author:** u/#{submission.author}\n"
                     f"**Subreddit:** r/#{submission.subreddit}\n"
-                    f"**Author:** u/#{submission.author}"
+                    f"**Link:** {submission.url}"
                 ),
             )
 
@@ -171,7 +168,10 @@ class Bot:
             mention.reply(
                 "Yes, video. I'm ready, sending to Telegram...\n\n"
                 f"### [Upload via {default_telegram_channel}]"
-                f"(https://t.me/s/{default_telegram_channel}/{message.id})"
+                f"(https://t.me/s/{default_telegram_channel}/{message.message_id})\n\n"
+                f"[About]({config.get('info', 'about')}) | "
+                f"[Feedback]({config.get('info', 'feedback')}) | "
+                f"[Source Code]({config.get('info', 'source_code')})"
             )
         except praw.exceptions.APIException as e:
             logger.warning("API exception: " + e.message)
@@ -183,7 +183,7 @@ class Bot:
 
     def _wait_for_rate_limiting_to_pass(self):
         logger.warning(
-            f"Waiting {config.getint('general', 'seconds_to_wait_after_rate_limiting')}"
+            f"Waiting {config.getint('general', 'seconds_to_wait_after_rate_limiting')} "
             "seconds for rate-limiting to wear off."
         )
         time.sleep(config.getint("general", "seconds_to_wait_after_rate_limiting"))
@@ -191,8 +191,7 @@ class Bot:
 
 def run():
     bot = Bot(utils.reddit_session(), utils.telegram_session())
-    
-    
+
     while True:
         try:
             bot.reply_to_username_mentions()

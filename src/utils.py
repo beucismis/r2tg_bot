@@ -8,13 +8,16 @@ from pyrogram import Client as Telegram
 from praw.models import Comment, Submission
 
 
+path = os.path.dirname(os.path.abspath(__file__))
+
+
 def check_ffmpeg():
     return which("ffmpeg") is not None
 
 
 def get_config():
     config = configparser.ConfigParser()
-    files = config.read("src/config.ini")
+    files = config.read(os.path.join(path, "config.ini"))
 
     if not len(files):
         raise FileNotFoundError("Config file not found!")
@@ -52,13 +55,13 @@ def download(url, filename):
     urllib.request.urlretrieve(url, filename=filename)
 
 
-def merge(video, audio):
+def merge(video, audio, output):
     subprocess.call(
-        f"ffmpeg -i {video} -i {audio} -c:v copy -c:a aac output.mp4 2>&1",
+        f"ffmpeg -i {video} -i {audio} -c:v copy -c:a aac {output}",
         shell=True,
     )
-    os.remove(f"{video}")
-    os.remove(f"{audio}")
+    os.remove(video)
+    os.remove(audio)
 
 
 def reddit_session():
@@ -80,4 +83,5 @@ def telegram_session():
         session_name=config.get("telegram", "session_name"),
         api_id=config.getint("telegram", "api_id"),
         api_hash=config.get("telegram", "api_hash"),
+        bot_token=config.get("telegram", "bot_token"),
     )

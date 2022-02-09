@@ -1,5 +1,9 @@
+import os
 import logging
 from logging.handlers import RotatingFileHandler
+
+
+path = os.path.dirname(os.path.abspath(__file__))
 
 
 class Handler(RotatingFileHandler):
@@ -7,7 +11,7 @@ class Handler(RotatingFileHandler):
     LEVEL = logging.INFO
 
     def __init__(self):
-        RotatingFileHandler.__init__(self, "r2tg_bot.log")
+        RotatingFileHandler.__init__(self, os.path.join(path, "logs", "r2tg_bot.log"))
         self.backupCount = 5
         self.encoding = "UTF-8"
         self.maxBytes = 5_000_000
