@@ -1,19 +1,21 @@
 [general]
 limit_on_inbox = 100
+comment_log_indent = 4
 seconds_between_runs = 30
+max_num_tags_per_user_in_chain = 3
 seconds_to_wait_after_rate_limiting = 300
 downloads_path =
 default_telegram_channel = r2tg_bot_archive
 
 [reddit]
-username =
+username = r2tg_bot
 password =
 user_agent = r2tg_bot by u/beucismis
 client_id =
 client_secret =
 
 [telegram]
-session = r2tg_bot
+session_name = r2tg_bot
 api_id =
 api_hash =
 bot_token =
