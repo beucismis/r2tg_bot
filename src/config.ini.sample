@@ -4,7 +4,6 @@ comment_log_indent = 4
 seconds_between_runs = 30
 max_num_tags_per_user_in_chain = 3
 seconds_to_wait_after_rate_limiting = 300
-downloads_path =
 default_telegram_channel = r2tg_bot_archive
 
 [reddit]
