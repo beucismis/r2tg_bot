@@ -78,8 +78,8 @@ General:
 Reddit:
 | key | type | description |
 | --- | ---- | ----- |
-| `username` | `str` | Reddit usurname. E.g: `u/r2tg_bot` |
-| `password` | `str` | Reddit password. |
+| `username` | `str` | Reddit acount username. E.g: `u/r2tg_bot` |
+| `password` | `str` | Reddit acount password. |
 | `user_agent` | `str` | Reddit user-agent. E.g: `r2tg_bot by u/beucismis` |
 | `client_id` | `str` | Reddit client ID. See: https://old.reddit.com/prefs/apps/ |
 | `client_secret` | `str` | Reddit client secret. See: https://old.reddit.com/prefs/apps/ |
