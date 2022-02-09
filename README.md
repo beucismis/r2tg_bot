@@ -1,17 +1,15 @@
+# r2tg_bot
 
-<img src="https://user-images.githubusercontent.com/40023234/132841187-cbf3f5b6-9ddf-4d25-ab12-f3006e828baa.png" width="200" align="right">
+![](https://img.shields.io/badge/python-v3.6%2B-blue) ![](https://img.shields.io/github/languages/code-size/beucismis/r2tg_bot) ![](https://img.shields.io/badge/style-black-black)
 
-![](https://img.shields.io/badge/python-3.7%2B-red) ![](https://img.shields.io/badge/style-black-red?style=flat) ![](https://img.shields.io/reddit/user-karma/combined/r2tg_bot)
+A Reddit bot that uploads video or GIF files to Telegram. Just mention me (`u/r2tg_bot`) in the comments. All requests are upload to archive channel by default. NSFW etc. content is not allowed on default channel. If you liked me, reply to my answer saying "good bot".
 
-A Reddit bot that uploads video or GIF files to Telegram. Just mention me (`u/r2tg_bot`) in the comments. All requests are upload to archive channel by default. NSFW etc. content is not allowed on default channel. If you liked me, reply to my answer saying "**good bot**".
-
-Reddit bot: https://reddit.com/u/r2tg_bot <br/>
-Telegram bot: https://t.me/r2tg_bot <br/>
 Archive channel: https://t.me/s/r2tg_bot_archive
 
 <details>
   <summary>Show the demo</summary>
-<img src="statics/demo.png" width="350">
+  <img src="https://user-images.githubusercontent.com/40023234/153205793-f4ff6f5a-8b1e-4d9c-a432-c981b07ca54b.jpg" width="400">
+  <img src="https://user-images.githubusercontent.com/40023234/153206077-987b3dec-1c1a-4bb5-8a2e-247eaca19a6e.png" width="358">
 </details>
 
 ## Features
@@ -23,41 +21,95 @@ Archive channel: https://t.me/s/r2tg_bot_archive
 - Video and GIF upload
 - Written in Python
 
-## Installation
+## Requirements
 
-### Requirements
+Python: `3.6+` is required. Also it use [FFmpeg](https://ffmpeg.org) to merge downloaded video and audio.
 
-It use [FFmpeg](https://ffmpeg.org) to merge downloaded video and audio.
-
-* Python: `3.7+`
-* Dependencies:
-  * Debian, Ubuntu: `ffmpeg`
-  * Fedora: `ffmpeg`
-  * Arch Linux: `ffmpeg4.0`
-  * CentOS: `ffmpeg`
-
-### Manual
-
-#### From source
-
-1. Clone the reporistrory.
+For Debian based: 
 ```sh
-git clone https://github.com/beucismis/r2tg_bot && cd r2tg_bot/
+apt install ffmpeg
+```
+For Arch based: 
+```sh
+pacman -S ffmpeg4.0
 ```
 
-2. Install dependencies.
-```sh
-pip3 install -r requirements.txt --user
-```
+## Installing and Running
 
-3. Build the project.
-```sh
-python3 install setup.py
+Clone the reporistrory:
+```
+git clone https://github.com/beucismis/r2tg_bot
+```
+Install dependencies:
+```
+pip3 install --user -r requirements.txt
+```
+Set service file (Don't forget to set the [user](https://github.com/beucismis/r2tg_bot/blob/main/r2tg_bot.service#L11-L14)):
+```
+cp r2tg_bot.service /etc/systemd/system/
+```
+Set configuration file ([Click](#configuration-file) for more):
+```
+cd src/
+mv config.ini.sample config.ini
+```
+Running the bot:
+```
+systemctl enable r2tg_bot.service
+systemctl start r2tg_bot.service
+```
+Chech the bot status:
+```
+systemctl status r2tg_bot.service
 ```
 
 ## Configuration File
 
-Soon...
+General:
+| key | type | description |
+| --- | ---- | ----- |
+| `limit_on_inbox` | `int` | The number of messages to read in the Reddit inbox. |
+| `comment_log_indent` | `int` | ? |
+| `seconds_between_runs` | `int` | Cycle waiting time. In seconds. |
+| `max_num_tags_per_user_in_chain` | `int` | Max num tags per user in chain. |
+| `seconds_to_wait_after_rate_limiting` | `int` | Seconds to wait after rate limiting. |
+| `default_telegram_channel` | `str` | Channel name. Don't forget to add the bot to the channel. |
+
+Reddit:
+| key | type | description |
+| --- | ---- | ----- |
+| `username` | `str` | Reddit usurname. E.g: `u/r2tg_bot` |
+| `password` | `str` | Reddit password. |
+| `user_agent` | `str` | Reddit user-agent. E.g: `r2tg_bot by u/beucismis` |
+| `client_id` | `str` | Reddit client ID. See: https://old.reddit.com/prefs/apps/ |
+| `client_secret` | `str` | Reddit client secret. See: https://old.reddit.com/prefs/apps/ |
+
+
+Telegram:
+| key | type | description |
+| --- | ---- | ----- |
+| `session_name` | `str` | Session name. E.g: `r2tg_bot` |
+| `api_id` | `str` | App ID. See: https://my.telegram.org/apps |
+| `api_hash` | `str` | API hash. See: https://my.telegram.org/apps |
+| `bot_token` | `str` | Bot token: See: https://core.telegram.org/api#bot-api |
+
+Black List:
+| key | type | description |
+| --- | ---- | ----- |
+| `users` | `str` | Blocked users list. E.g: `AutoModerator,Sub_Corrector_Bot` |
+| `subrettis` | `str` | Blocked subreddits list. E.g: `depression,SuicideWatch` |
+ 
+Info:
+| key | type | description |
+| --- | ---- | ----- |
+| `source_code` | `str` | Source code URL. |
+| `about` | `str` | About page URL. |
+| `feedback` | `str` | Feedback page URL. |
+
+## Tips and Tricks
+
+Use `tail -f src/logs/r2tg_bot.log` for live log output. <br/>
+Add `0 0 * * * /bin/rm -f /home/username/r2tg_bot/src/media/*.mp4` to your cron file to clean media once a day.
 
 ## License
 This project lisanced under GPL-3.0 - for details check [LICENSE](LICENSE) file.
