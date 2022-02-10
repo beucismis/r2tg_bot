@@ -1,6 +1,6 @@
 # r2tg_bot
 
-![](https://img.shields.io/badge/python-v3.6%2B-blue) ![](https://img.shields.io/github/languages/code-size/beucismis/r2tg_bot) ![](https://img.shields.io/badge/style-black-black)
+![](https://img.shields.io/uptimerobot/status/m790607794-5f03cd33d5ce1319d7b290f6) ![](https://img.shields.io/badge/python-v3.6%2B-blue) ![](https://img.shields.io/github/languages/code-size/beucismis/r2tg_bot) ![](https://img.shields.io/badge/style-black-black)
 
 A Reddit bot that uploads video or GIF files to Telegram. Just mention me (`u/r2tg_bot`) in the comments. All requests are upload to archive channel by default. NSFW etc. content is not allowed on default channel. If you liked me, reply to my answer saying "good bot".
 
@@ -14,7 +14,7 @@ Archive channel: https://t.me/s/r2tg_bot_archive
 
 ## Features
 
-- Fast and easy
+- Tiny and fast
 - Customizable
 - Self-hosted
 - Trigger with comment
@@ -51,7 +51,7 @@ cp r2tg_bot.service /etc/systemd/system/
 Set configuration file ([Click](#configuration-file) for more):
 ```
 cd src/
-mv config.ini.sample config.ini
+cp config.ini.sample config.ini
 ```
 Running the bot:
 ```
