@@ -24,11 +24,12 @@ class Bot:
         skip = False
         limit_on_inbox = config.getint("general", "limit_on_inbox")
 
-        if not len(self.inbox.unread(limit=limit_on_inbox)):
+        if not len(list(self.inbox.unread(limit=limit_on_inbox))):
             skip = True
 
         if not skip:
             logger.info("Reading inbox...")
+            logger.info("-" * 50)
 
         for mention in self.inbox.unread(limit=limit_on_inbox):
             lower = mention.body.lower()
@@ -91,7 +92,7 @@ class Bot:
             self._wait_for_rate_limiting_to_pass()
             self.inbox.mark_unread([comment])
 
-        logger.info("Comment processed.")
+        #logger.info("Comment processed.")
 
     def _too_many_tagged(self, mention):
         tags = 0
