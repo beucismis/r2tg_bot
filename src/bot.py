@@ -20,17 +20,17 @@ class Bot:
         self.good_bot_strings = ["good bot", "iyi bot", "cici bot"]
         self.bad_bot_strings = ["bad bot", "kötü bot"]
 
-    def tag_for_bot(self):
-        me = self.reddit_session.user.me()
-
-        return f"u/{me.name.lower()}"
-
     def reply_to_username_mentions(self):
-        logger.info("Reading inbox...")
+        skip = False
+        limit_on_inbox = config.getint("general", "limit_on_inbox")
 
-        for mention in self.inbox.unread(
-            limit=config.getint("general", "limit_on_inbox")
-        ):
+        if not len(self.inbox.unread(limit=limit_on_inbox)):
+            skip = True
+
+        if not skip:
+            logger.info("Reading inbox...")
+
+        for mention in self.inbox.unread(limit=limit_on_inbox):
             lower = mention.body.lower()
 
             if isinstance(mention, Comment) and self._was_tagged_in(mention):
@@ -49,11 +49,14 @@ class Bot:
                 mention.reply("( ._.)")
                 logger.info(f"u/{utils.author_name(comment)} said bad bot.")
 
-        logger.info("Finished reading inbox.")
-        logger.info("-" * 50)
+        if not skip:
+            logger.info("Finished reading inbox.")
+            logger.info("-" * 50)
 
     def _was_tagged_in(self, mention):
-        return self.tag_for_bot() in mention.body.lower()
+        me = self.reddit_session.user.me()
+
+        return f"u/{me.name.lower()}" in mention.body.lower()
 
     def _reply_to_comment(self, comment):
         should_reply = True
