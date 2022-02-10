@@ -25,5 +25,5 @@ subreddits = depression,SuicideWatch
 
 [info]
 source_code = https://github.com/beucismis/r2tg_bot
-about = https://reddit.com/user/r2tg_bot/comments/lz1d7b/about_the_r2tg_bot
-feedback = https://reddit.com/message/compose/?to=beucismis&subject=Feedback%20for%20r2tg_bot
+about = https://github.com/beucismis/r2tg_bot#r2tg_bot
+feedback = https://reddit.com/message/compose/?to=beucismis&subject=feedback-for-r2tg_bot
