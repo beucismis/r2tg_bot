@@ -28,6 +28,7 @@ class Bot:
             skip = True
 
         if not skip:
+            logger.info("-" * 50)
             logger.info("Reading inbox...")
             logger.info("-" * 50)
 
@@ -52,7 +53,6 @@ class Bot:
 
         if not skip:
             logger.info("Finished reading inbox.")
-            logger.info("-" * 50)
 
     def _was_tagged_in(self, mention):
         me = self.reddit_session.user.me()
@@ -90,7 +90,7 @@ class Bot:
         if got_rate_limited:
             logger.warning("Got rate-limited, will try again in next pass of inbox.")
             self._wait_for_rate_limiting_to_pass()
-            self.inbox.mark_unread([comment])
+            #self.inbox.mark_unread([comment])
 
         #logger.info("Comment processed.")
 
@@ -190,6 +190,7 @@ class Bot:
             f"Waiting {config.getint('general', 'seconds_to_wait_after_rate_limiting')} "
             "seconds for rate-limiting to wear off."
         )
+        logger.info("-" * 50)
         time.sleep(config.getint("general", "seconds_to_wait_after_rate_limiting"))
 
 
