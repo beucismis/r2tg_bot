@@ -55,12 +55,12 @@ cp config.ini.sample config.ini
 ```
 Running the bot:
 ```
-systemctl enable r2tg_bot.service
-systemctl start r2tg_bot.service
+service r2tg_bot enable # or disable
+service r2tg_bot start # or restart maybe stop
 ```
 Chech the bot status:
 ```
-systemctl status r2tg_bot.service
+service r2tg_bot status
 ```
 
 ## Configuration File
