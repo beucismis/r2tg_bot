@@ -133,7 +133,7 @@ class Bot:
 
         video_path = os.path.join(path, "media", f"{filename}_video.mp4")
         audio_path = os.path.join(path, "media", f"{filename}_audio.mp4")
-        output_path = os.path.join(path, "media", f"{filename}.mp4")
+        output_path = os.path.join(path, "media", f"{config.get('reddit', 'username')}_{filename}.mp4")
 
         logger.info("Downloading video...")
         utils.download(video_url, video_path)
